@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('userLyric', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('lyric_id')->references('id')->on('lyrics');
+            $table->string('full_title');
+            $table->string('lyrics');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
-    Route::resource('/userLyrics', \App\Http\Controllers\UserLyricController::class);
+    Route::resource('userLyrics', \App\Http\Controllers\UserLyricController::class);
 });
 
 //Route::get('/api-data', [\App\Http\Controllers\ApiController::class, 'getData']);

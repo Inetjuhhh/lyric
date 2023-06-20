@@ -1,9 +1,8 @@
-// const searchForm = document.getElementById('searchForm');
-// const queryInput = document.getElementById('queryInput');
-const apiKey = '78f0c98dc4mshf91bd8f40eb69c8p16578fjsn0b2ec7688c2a';
-
 function doApiSearch(query) {
-    fetch(`https://genius-song-lyrics1.p.rapidapi.com/search/?q=${query}&rapidapi-key=${apiKey}`)
+    let api_route = document.querySelector('[name="my_api_route"]').content;
+    let add_lyric = document.querySelector('[name="add_lyric"]').content;
+    console.log(api_route);
+    fetch(`${api_route}?q=${query}`)
         .then(response => response.json())
         .then(data => {
             let result = data;
@@ -13,7 +12,13 @@ function doApiSearch(query) {
                 //haalt de volledige titel op van de liedjes die gezocht worden.
                 let lyricSong = hit.result['full_title'];
                 console.log(lyricSong);
-                let song = "<tr><td>" + lyricSong + "</td><td><button class='p-6 bg-gray-200 border-gray-400 rounded-lg'>+</button></td></tr>";
+                let song = "<tr><td>" + lyricSong + "</td>" +
+                    "<td>" +
+                    "<form action=' + ${add_lyric}  + ' method='post'>" +
+                        "<input type='text' name='full_title' value='" + lyricSong + "'>" +
+                        "<input type='text' name='lyrics' value=''>"
+                        "<input type='submit' value='Add to my lyrics' className='p-6 bg-gray-200 border-gray-400 rounded-lg'>"
+                    "</form></td></tr>";
                 ulSongList += song;
             });
             ulSongList += "</tbody></table>";
@@ -23,14 +28,4 @@ function doApiSearch(query) {
             // Handle any errors
             console.error(error);
         });
-
 }
-// <script>
-//     lyricSong.forEach(function (song)
-//     {
-//         document.write( "<ul>" +
-//             "<li>" + song + "</li>" +
-//             "</ul>");
-//     });
-// </script>
-// });

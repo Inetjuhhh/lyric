@@ -31,7 +31,7 @@ class UserLyricController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

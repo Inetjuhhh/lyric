@@ -19,12 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // routes/api.php
 
+Route::get('/search', [\App\Http\Controllers\ApiController::class, 'doApiSearch'])->name('doApiSearch');
 
-Route::get('/api-key', function (Request $request) {
-    return response()->json([
-        'api_key' => env('RAPID_API_KEY')
-    ]);
-});
+
 
 //use Illuminate\Support\Facades\Http;
 //
