@@ -42,7 +42,7 @@ class UserLyricController extends Controller
         $userLyric->lyrics = "lorem ipsum bla bla bla bla";
         $userLyric->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Lyric added to your lyric-list');
     }
 
     /**

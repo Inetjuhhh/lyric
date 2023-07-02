@@ -10,6 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-400">
                     <h2 class="text-2xl">All results of songs with {{$queryInput}}</h2>
+                    <x-status-message></x-status-message>
                     <div id="song"><div class="lds-heart"></div></div>
                 </div>
             </div>
