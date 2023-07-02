@@ -2,6 +2,7 @@
     <x-slot name="head">
         <meta name="my_api_route" content="{{ route('doApiSearch') }}" />
         <meta name="add_lyric" content="{{route('userLyrics.store')}}">
+        <meta name="csrf_token" content="{{ csrf_token() }}">
     </x-slot>
 
     <div class="py-12">

@@ -1,6 +1,7 @@
 function doApiSearch(query) {
     let api_route = document.querySelector('[name="my_api_route"]').content;
     let add_lyric = document.querySelector('[name="add_lyric"]').content;
+    let csrf_token = document.querySelector('[name="csrf_token"]').content;
     console.log(api_route);
     fetch(`${api_route}?q=${query}`)
         .then(response => response.json())
@@ -14,10 +15,12 @@ function doApiSearch(query) {
                 console.log(lyricSong);
                 let song = "<tr><td>" + lyricSong + "</td>" +
                     "<td>" +
-                    "<form action=' + ${add_lyric}  + ' method='post'>" +
-                        "<input type='text' name='full_title' value='" + lyricSong + "'>" +
-                        "<input type='text' name='lyrics' value=''>"
-                        "<input type='submit' value='Add to my lyrics' className='p-6 bg-gray-200 border-gray-400 rounded-lg'>"
+                    "<form action='" + add_lyric  + "' method='post'>" +
+                        "<input type='hidden' name='_token' value='" + csrf_token + "'>" +
+                        "<input type='hidden' name='user_id' value=''>" +
+                        "<input type='hidden' name='full_title' value='" + lyricSong + "'>" +
+                        "<input type='hidden' name='lyrics' value=''>" +
+                        "<input type='submit' value='Add to my lyrics' class='p-6 bg-gray-200 border-gray-400 rounded-lg'>" +
                     "</form></td></tr>";
                 ulSongList += song;
             });

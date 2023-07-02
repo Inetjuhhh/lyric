@@ -21,7 +21,8 @@ class UserLyricFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'lyric_id' => Lyric::factory()
+            'full_title' => $this->faker->sentence(),
+            'lyrics' => $this->faker->paragraph(2)
         ];
     }
 }

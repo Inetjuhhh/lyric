@@ -141,9 +141,6 @@
         </div>
     </div>
 </nav>
-<main>
-    <div id="results"></div>
-</main>
 
 </body>
 </html>

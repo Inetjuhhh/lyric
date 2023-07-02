@@ -7,7 +7,7 @@
             </div>
         @endif
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="container mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="w-4 p-4 text-l text-blue uppercase bg-blue-600 dark:text-white">
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="col" class="px-6 py-3">Artist</th>
@@ -18,8 +18,8 @@
                 <tbody>
                     @foreach($userLyrics as $userLyric)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4"><a class="hover:text-red-700" href="{{route('userLyrics.show', $userLyric->id)}}">{{$userLyric->lyric->artist}}</a></td>
-                                <td class="w-4 p-4"><a class="hover:text-red-700" href="{{route('userLyrics.show', $userLyric->id)}}">{{$userLyric->lyric->song}}</a></td>
+                                <td class="w-4 p-4"><a class="hover:text-red-700" href="{{route('userLyrics.show', $userLyric->id)}}">{{$userLyric->full_title}}</a></td>
+                                <td class="w-4 p-4"><a class="hover:text-red-700" href="{{route('userLyrics.show', $userLyric->id)}}">{{$userLyric->lyrics}}</a></td>
                                 <td class="w-4 p-4">
                                     <form action="{{ route('userLyrics.destroy', $userLyric->id) }} " method="post">
                                         @csrf
