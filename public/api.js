@@ -7,6 +7,8 @@ function doApiSearch(query) {
         .then(response => response.json())
         .then(data => {
             let result = data;
+            console.log(result);
+
             let hits = result.hits;
             let ulSongList =
                 "<table class='w-full text-sm text-left text-gray-500 dark:text-gray-400'>" +
@@ -20,20 +22,25 @@ function doApiSearch(query) {
             hits.forEach(function (hit) {
                 //haalt de volledige titel op van de liedjes die gezocht worden.
                 let lyricSong = hit.result['full_title'];
-                console.log(lyricSong);
+                let lyricId = hit.result['id'];
+                console.log(hits);
+
                 let song =
-                    "<tr class='[&>*:nth-child(even)]:text-blue-600 [&>*:nth-child(even)]:font-bold '>" +
-                        "<td>" + lyricSong + "</td>" +
-                        "<td class='p-6 text-blue-500 bg-gray-200 border-gray-400 rounded-lg' >" +
-                            "<form action='" + add_lyric  + "' method='post' >" +
-                                "<input type='hidden' name='_token' value='" + csrf_token + "'>" +
-                                "<input type='hidden' name='user_id' value=''>" +
-                                "<input type='hidden' name='full_title' value='" + lyricSong + "'>" +
-                                "<input type='hidden' name='lyrics' value=''>" +
-                                "<input type='submit' value='Add to my lyrics' class='text-blue-500' >" +
-                            "</form>" +
-                        "</td>" +
-                    "</tr>";
+                    `
+                     <tr class="[&>*:nth-child(even)]:text-blue-600 [&>*:nth-child(even)]:font-bold">
+                        <td> ${lyricSong} </td>
+                        <td class="p-6 text-blue-500 bg-gray-200 border-gray-400 rounded-lg">
+                            <form action="${add_lyric}" method="post">
+                                <input type="hidden" name="_token" value="${csrf_token}">
+                                <input type="hidden" name="user_id" value="">
+                                <input type="hidden" name="lyric_id" value="${lyricId}">
+                                <input type="hidden" name="full_title" value="${lyricSong}">
+                                <input type="lyrics" name="lyrics" value="">
+                                <input type="submit" value="Add to my lyrics" class="text-blue-500">
+                            </form>
+                        </td>
+                     </tr>
+                    `
                 ulSongList += song;
             });
             ulSongList += "</tbody></table>";

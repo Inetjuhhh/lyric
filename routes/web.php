@@ -35,14 +35,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
 //Route::get('/api-data', [\App\Http\Controllers\ApiController::class, 'getData']);
 
 Route::get('/lyrics/search', [\App\Http\Controllers\LyricController::class, 'search'])->name('searchLyrics');
-//
-//Route::post('/lyrics/search', function () {
-//    $data = json_decode(file_get_contents('php://input'), true);
-//    $hits = $data['data'];
-//
-////    echo "you rock, Ine";
-//    return view('/dashboard.lyrics.searchLyrics')->with('hits', $hits);
-//
-//});
+
 
 require __DIR__.'/auth.php';

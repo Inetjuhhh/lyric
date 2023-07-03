@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('userLyric', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->bigInteger('lyric_id')->nullable();
             $table->string('full_title');
-            $table->string('lyrics');
+            $table->string('lyrics')->nullable();
             $table->timestamps();
         });
     }

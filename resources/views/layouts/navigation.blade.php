@@ -20,7 +20,7 @@
                     <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="FlowBite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LyricApp</span>
                 </a>
-                <form id="searchForm" action="{{route('searchLyrics')}}" method="GET" class="hidden lg:block lg:pl-2">
+                <form id="searchForm" action="{{route('searchLyrics')}}" method="GET" class="">
                     <div class="flex justify-between items-center bg-gray-100 rounded-full">
                         <input type="text" name="queryInput" placeholder="Enter your artist or title" class="mr-3 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <input type="submit" value="Search" class="mr-3 block py-2 pl-3 pr-4 text-white text-blue-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white">

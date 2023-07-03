@@ -10,4 +10,9 @@ class LyricController extends Controller
         $queryInput = $_GET['queryInput'];
         return view('dashboard/lyrics/searchLyrics')->with('queryInput', $queryInput);
     }
+
+    public function lyricLoader(){
+        $lyric_id = $_POST['lyric_id'];
+
+    }
 }
