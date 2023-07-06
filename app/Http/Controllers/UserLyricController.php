@@ -16,7 +16,7 @@ class UserLyricController extends Controller
     public function index()
     {
         $userLyrics = UserLyric::all();
-        return view('dashboard/userlyrics/index')->with('userLyrics', $userLyrics);
+        return view('dashboard/userLyrics/index')->with('userLyrics', $userLyrics);
     }
 
     /**
@@ -52,7 +52,10 @@ class UserLyricController extends Controller
     {
         $userLyric = UserLyric::findOrFail($id);
 
-        $lyrics_array = ApiController::lyricLoader($userLyric->lyric_id);
+        if(!$userLyric->lyrics) {
+            $lyrics_array = ApiController::lyricLoader($userLyric->lyric_id);
+        }
+
         $parse_lyrics = json_decode($lyrics_array, true);
         $lyrics = $parse_lyrics["lyrics"]["lyrics"]["body"]["html"];
         return view('dashboard/userLyrics/show')->with('userLyric', $userLyric)->with('lyrics', $lyrics);

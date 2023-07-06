@@ -3,9 +3,10 @@ function doApiSearch(query) {
     let add_lyric = document.querySelector('[name="add_lyric"]').content;
     let csrf_token = document.querySelector('[name="csrf_token"]').content;
     console.log(api_route);
-    fetch(`${api_route}?q=${query}`)
+    fetch(`${api_route}?q=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(data => {
+                console.log(data);
             let result = data;
             console.log(result);
 
